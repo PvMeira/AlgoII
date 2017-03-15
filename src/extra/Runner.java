@@ -4,16 +4,27 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Runner {
+	private static final String OPTIONS = "Choose the option";
+	private static final String INSERT_BEGINING = "Insert on Begin :";
+	private static final String INSERT_END = "Insert on the End :";
+	private static final String SEARCH_VALUE = "Search a Value :";
+	private static final String LIST = "List all values on the list :";
+	private static final String VALUE = "Type a value :";
+	private static final String ERROR_EXIST_LIST = "value exist on the list";
+	private static final String ERROR_DONT_EXIST_LIST = "Value dosent Exist on the list";
+	private static final String INVALID_OPTION = "Invalid option !";
+
+	@SuppressWarnings("resource")
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		List list = new List();
 		String value = null, resp = null;
 		do {
-			System.out.println(
-					"Escolha a opção\n1->Inserir no Início:\n2->Inserir no fim:\n3->Pesquisar um valor:\n4->Listar valores da lista:");
+			System.out.println(OPTIONS + "\n1->" + INSERT_BEGINING + "\n2->" + INSERT_END + "\n3->" + SEARCH_VALUE
+					+ "\n4->" + LIST);
 			resp = sc.next();
 			if (resp.equals("1")) {
-				System.out.println("Digite um valor:");
+				System.out.println(VALUE);
 				value = sc.next();
 				// Insere valore no inicio da lista.
 				try {
@@ -22,7 +33,7 @@ public class Runner {
 					e.printStackTrace();
 				}
 			} else if (resp.equals("2")) {
-				System.out.println("Digite um valor:");
+				System.out.println(VALUE);
 				value = sc.next();
 				// Insere valores no final da lista.
 				try {
@@ -31,13 +42,13 @@ public class Runner {
 					e.printStackTrace();
 				}
 			} else if (resp.equals("3")) {
-				System.out.println("Digite um valor:");
+				System.out.println(VALUE);
 				value = sc.next();
 				// Pesquisa por valores na lista.
 				if (list.search(value) == true)
-					System.out.println("Valor existe na lista!");
+					System.out.println(ERROR_EXIST_LIST);
 				else
-					System.out.println("Valor não existe na lista!");
+					System.out.println(ERROR_DONT_EXIST_LIST);
 			} else if (resp.equals("4")) {
 				ArrayList<String> listar = new ArrayList<String>();
 				// Recebe os valores da lista em um ArrayList e os imprime.
@@ -52,7 +63,7 @@ public class Runner {
 				}
 				System.out.println();
 			} else
-				System.out.println("Opção inválida!");
+				System.out.println(INVALID_OPTION);
 		} while (resp != "9");
 	}
 }

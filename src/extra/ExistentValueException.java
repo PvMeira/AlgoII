@@ -1,5 +1,6 @@
 package extra;
 
+@SuppressWarnings("serial")
 public class ExistentValueException extends Exception {
 	public ExistentValueException() {
 		super();
